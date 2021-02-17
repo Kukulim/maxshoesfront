@@ -1,19 +1,19 @@
 <template>
-<div>
-  <b-navbar toggleable="lg" type="light" variant="light">
-    <div class="container">
-    <HeaderBarBrand />
+  <div>
+    <b-navbar toggleable="lg" type="light" variant="light">
+      <div class="container">
+        <HeaderBarBrand />
 
-    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-    <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav class="ml-auto">
-        <HeaderNav />
-      </b-navbar-nav>
-    </b-collapse>
-    </div>
-  </b-navbar>
-</div>
+        <b-collapse id="nav-collapse" is-nav>
+          <b-navbar-nav class="ml-auto">
+            <HeaderNav />
+          </b-navbar-nav>
+        </b-collapse>
+      </div>
+    </b-navbar>
+  </div>
 </template>
 
 <script>
@@ -25,6 +25,4 @@ export default {
   components: { HeaderBarBrand, HeaderNav }
 };
 </script>
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

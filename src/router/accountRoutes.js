@@ -36,9 +36,8 @@ export default [
       )
   },
   {
-    path: '*',
+    path: "*",
     component: () =>
-    import(/* webpackChunkName: "login" */ "../views/accountViews/Login.vue")
+      import(/* webpackChunkName: "login" */ "../views/accountViews/Login.vue")
   }
 ];
-

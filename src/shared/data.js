@@ -1,11 +1,15 @@
 import * as axios from "axios";
-import { API_LOCATION } from "../../config"
+import { API_LOCATION } from "../../config";
 
 const login = async function(currentUser) {
   try {
-    const response = await axios.post(`${API_LOCATION}/account/login/`, currentUser, {
-      headers: { "Content-Type": "application/json" }
-    });
+    const response = await axios.post(
+      `${API_LOCATION}/account/login/`,
+      currentUser,
+      {
+        headers: { "Content-Type": "application/json" }
+      }
+    );
     const userToReturn = response.data;
     return userToReturn;
   } catch (error) {
@@ -64,17 +68,20 @@ const sendConfirmEmail = async function(currentUser, currentAccesToken) {
 
 const sendPasswordResetEmail = async function(UserEmail) {
   try {
-    await axios.post(`${API_LOCATION}/account/SendPasswordResetEmail/`, UserEmail, {
-      headers: {
-        "Content-Type": "application/json",
+    await axios.post(
+      `${API_LOCATION}/account/SendPasswordResetEmail/`,
+      UserEmail,
+      {
+        headers: {
+          "Content-Type": "application/json"
+        }
       }
-    });
+    );
   } catch (error) {
     console.error(error);
     return null;
   }
 };
-
 
 export const data = {
   login,

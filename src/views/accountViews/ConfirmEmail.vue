@@ -44,19 +44,19 @@ export default {
     return {
       loading: true,
       sended: false,
-      countDown: 10,
+      countDown: 10
     };
   },
   computed: {
     ...mapState("auth", { user: "user" }),
     ...mapState("auth", { accessToken: "accessToken" }),
-    ...mapMutations("auth", ["removeTokens"]),
+    ...mapMutations("auth", ["removeTokens"])
   },
   methods: {
     async sendEmail() {
       const Currentuser = {
         username: this.user.userName,
-        useremail: this.user.email,
+        useremail: this.user.email
       };
       try {
         await data.sendConfirmEmail(Currentuser, this.accessToken);
@@ -78,10 +78,9 @@ export default {
           this.$router.push({ name: "Login" });
         }, 10000);
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

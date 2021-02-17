@@ -11,15 +11,9 @@
       @sliding-start="onSlideStart"
       @sliding-end="onSlideEnd"
     >
-      <b-carousel-slide
-        img-src="@/assets/valentinesale.jpg"
-      ></b-carousel-slide>
-      <b-carousel-slide
-        img-src="@/assets/feet-boots.jpg"
-      ></b-carousel-slide>
-      <b-carousel-slide
-        img-src="@/assets/boots.jpg"
-      ></b-carousel-slide>
+      <b-carousel-slide img-src="@/assets/valentinesale.jpg"></b-carousel-slide>
+      <b-carousel-slide img-src="@/assets/feet-boots.jpg"></b-carousel-slide>
+      <b-carousel-slide img-src="@/assets/boots.jpg"></b-carousel-slide>
     </b-carousel>
   </div>
 </template>
@@ -29,7 +23,7 @@ export default {
   data() {
     return {
       slide: 0,
-      sliding: null,
+      sliding: null
     };
   },
   methods: {
@@ -38,13 +32,14 @@ export default {
     },
     onSlideEnd() {
       this.sliding = false;
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style scoped lang="scss">
 .carousel-container {
   max-width: 60%;
+  margin: auto;
 }
 </style>

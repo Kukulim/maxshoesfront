@@ -35,6 +35,8 @@ html, body {
 }
 input{
     text-indent:40px;
+    min-width: 250px;
+    max-width: 400px;
 }
 .input-wrapper {
     position: relative;

@@ -9,19 +9,9 @@
       </router-link>
     </ul>
     <ul v-if="isLoggedIn" class="navbar-nav">
-            <router-link to="/shophome" class="nav-link ">
-        Store
-      </router-link>
-      <router-link to="/myauctions" class="nav-link ">
-        My Auctions
-      </router-link>
-      <router-link to="/profile" class="nav-link ">
-        Profile
-      </router-link>
-      <router-link to="/" class="nav-link ml-4" @click="logout()">
+      <button to="/" class="btn btn-primary mt-3 mb-3" @click="logout()">
         Logout
-      </router-link>
-
+      </button>
     </ul>
   </nav>
 </template>
