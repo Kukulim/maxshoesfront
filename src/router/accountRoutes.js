@@ -32,12 +32,28 @@ export default [
     name: "ForgottenPassword",
     component: () =>
       import(
-        /* webpackChunkName: "confirmemail" */ "../views/accountViews/ForgottenPassword.vue"
+        /* webpackChunkName: "forgottenpassword" */ "../views/accountViews/ForgottenPassword.vue"
+      )
+  },
+  {
+    path: "/changepassword",
+    name: "ChangePassword",
+    component: () =>
+      import(
+        /* webpackChunkName: "forgottenpassword" */ "../views/accountViews/ChangePassword.vue"
+      )
+  },
+  {
+    path: "/contact",
+    name: "Contact",
+    component: () =>
+      import(
+        /* webpackChunkName: "contact" */ "../views/accountViews/Contact.vue"
       )
   },
   {
     path: "*",
     component: () =>
-      import(/* webpackChunkName: "login" */ "../views/accountViews/Login.vue")
+      import(/* webpackChunkName: "*" */ "../views/accountViews/Login.vue")
   }
 ];

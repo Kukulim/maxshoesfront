@@ -1,15 +1,20 @@
 <template>
   <nav class="ml-auto">
     <ul v-if="!isLoggedIn" class="navbar-nav">
-      <router-link to="/register" class="nav-link ">
-        Register
-      </router-link>
-      <router-link to="/login" class="nav-link ">
-        Login
-      </router-link>
+      <router-link to="/register" class="nav-link"> Register </router-link>
+      <router-link to="/login" class="nav-link"> Login </router-link>
     </ul>
     <ul v-if="isLoggedIn" class="navbar-nav">
-      <button to="/" class="btn btn-primary mt-3 mb-3" @click="logout()">
+      <router-link to="/notificationwelcome" class="nav-link">
+        Home
+      </router-link>
+      <router-link to="/notificationlist" class="nav-link">
+        My Notifications
+      </router-link>
+      <router-link to="/contact" class="nav-link">
+        Personal information
+      </router-link>
+      <button class="btn btn-primary" @click="logout()">
         Logout
       </button>
     </ul>
@@ -22,11 +27,12 @@ export default {
     ...mapMutations("auth", ["removeTokens"]),
     logout() {
       this.removeTokens();
-    }
+      this.$router.push({ name: "WelcomePage" });
+    },
   },
   computed: {
-    ...mapGetters("auth", ["isLoggedIn"])
-  }
+    ...mapGetters("auth", ["isLoggedIn"]),
+  },
 };
 </script>
 <style scoped></style>

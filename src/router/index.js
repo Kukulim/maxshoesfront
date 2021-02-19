@@ -5,9 +5,10 @@ Vue.use(VueRouter);
 
 import AccountRoutes from "@/router/accountRoutes";
 import InfrastructureRoutes from "@/router/infrastructureRoutes";
+import NotificationRoutes from "@/router/notificationRoutes";
 
 let allRoutes = [];
-allRoutes = allRoutes.concat(AccountRoutes).concat(InfrastructureRoutes);
+allRoutes = allRoutes.concat(AccountRoutes).concat(NotificationRoutes).concat(InfrastructureRoutes);
 
 const routes = allRoutes;
 

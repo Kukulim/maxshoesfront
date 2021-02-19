@@ -10,5 +10,8 @@ export default {
   },
   getCurrentRefreshToken(state) {
     return state.refreshToken;
-  }
+  },
+  getCurrentUserContact(state) {
+    return state.contact;
+  },
 };

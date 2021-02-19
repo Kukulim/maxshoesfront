@@ -76,7 +76,7 @@ export default {
       const response = await this.loginAction(this.currentUser);
       if (response == "error") {
         this.showerrormesage = true;
-      } else this.$router.push({ name: "WelcomePage" });
+      } else this.$router.push({ name: "NotificationWelcome" });
     }
   }
 };

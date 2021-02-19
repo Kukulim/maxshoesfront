@@ -15,5 +15,8 @@ export default {
     state.user = null;
     state.accessToken = null;
     state.refreshToken = null;
-  }
+  },
+  setCurrentUserContact(state, tempContact) {
+    state.contact = tempContact;
+  },
 };

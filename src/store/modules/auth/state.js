@@ -3,4 +3,5 @@ export default {
   accessToken: null,
   refreshToken: null,
   remainingTokenTime: 0,
+  contact: null
 };

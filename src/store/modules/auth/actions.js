@@ -10,6 +10,7 @@ export const loginAction = async ({ dispatch }, currentUser) => {
 };
 export const authorizeAction = async ({ commit, dispatch }, currentUser) => {
   await commit("setCurrentUser", currentUser);
+  await commit("setCurrentUserContact", currentUser.contact);
   await commit("setCurrentAccessToken", currentUser.accessToken);
   await commit("setCurrentRefreshToken", currentUser.refreshToken);
   return dispatch("refreshToken");
@@ -28,5 +29,14 @@ export const refreshToken = async ({ commit, dispatch, state }) => {
   setTimeout(() => {
     dispatch("refreshAction");
   }, state.remainingTokenTime);
+};
+
+export const saveContactAction = async ({ commit }, currentUser) => {
+  await commit("setCurrentUserContact", currentUser.contact);
+  try {
+    await data.saveContact(currentUser, currentUser.accessToken);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
