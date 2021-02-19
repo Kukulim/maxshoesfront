@@ -13,5 +13,5 @@ export default {
   },
   getCurrentUserContact(state) {
     return state.contact;
-  },
+  }
 };

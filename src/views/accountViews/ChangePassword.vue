@@ -74,25 +74,28 @@ export default {
       ChangePasswordRequest: {
         email: "",
         oldpassword: "",
-        newpassword: "",
+        newpassword: ""
       },
-      showerrormesage: false,
+      showerrormesage: false
     };
   },
-    computed: {
-    ...mapState("auth", { accessToken: "accessToken" }),
+  computed: {
+    ...mapState("auth", { accessToken: "accessToken" })
   },
   methods: {
     async ChangePassword(event) {
       event.preventDefault();
 
-      const response = await data.changePassword(this.ChangePasswordRequest, this.accessToken)
+      const response = await data.changePassword(
+        this.ChangePasswordRequest,
+        this.accessToken
+      );
       console.log(this.ChangePasswordRequest);
       if (response == "error") {
         this.showerrormesage = true;
       } else this.$router.push({ name: "NotificationWelcome" });
-    },
-  },
+    }
+  }
 };
 </script>
 

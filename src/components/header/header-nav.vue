@@ -28,11 +28,11 @@ export default {
     logout() {
       this.removeTokens();
       this.$router.push({ name: "WelcomePage" });
-    },
+    }
   },
   computed: {
-    ...mapGetters("auth", ["isLoggedIn"]),
-  },
+    ...mapGetters("auth", ["isLoggedIn"])
+  }
 };
 </script>
 <style scoped></style>

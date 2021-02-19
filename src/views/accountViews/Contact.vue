@@ -124,12 +124,12 @@ import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
-      showmessage: false,
+      showmessage: false
     };
   },
   computed: {
     ...mapState("auth", { contact: "contact" }),
-    ...mapState("auth", { CurrentUser: "user" }),
+    ...mapState("auth", { CurrentUser: "user" })
   },
   methods: {
     ...mapActions("auth", ["saveContactAction"]),
@@ -141,12 +141,12 @@ export default {
       const UserToSave = {
         email: this.CurrentUser.email,
         accessToken: this.CurrentUser.accessToken,
-        contact: this.contact,
+        contact: this.contact
       };
       await this.saveContactAction(UserToSave);
       this.showmessage = true;
-    },
-  },
+    }
+  }
 };
 </script>
 

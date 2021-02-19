@@ -9,7 +9,8 @@ export default [
       import(
         /* webpackChunkName: "NotificationList" */ "../views/notoficationViews/NotificationList.vue"
       )
-  },  {
+  },
+  {
     path: "/notificationwelcome",
     name: "NotificationWelcome",
     // route level code-splitting
@@ -19,6 +20,5 @@ export default [
       import(
         /* webpackChunkName: "NotificationWelcome" */ "../views/notoficationViews/NotificationWelcome.vue"
       )
-  },
-
+  }
 ];

@@ -83,29 +83,36 @@ const sendPasswordResetEmail = async function(UserEmail) {
   }
 };
 
-const saveContact = async function(currentUser ,currentAccesToken) {
+const saveContact = async function(currentUser, currentAccesToken) {
   console.log(currentUser);
   try {
-    await axios.post(`${API_LOCATION}/account/editcontact`,currentUser, {
+    await axios.post(`${API_LOCATION}/account/editcontact`, currentUser, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${currentAccesToken}`
-      },      
+      }
     });
   } catch (error) {
     console.error(error);
   }
 };
 
-const changePassword = async function(changePasswordRequest ,currentAccesToken) {
+const changePassword = async function(
+  changePasswordRequest,
+  currentAccesToken
+) {
   console.log(changePasswordRequest);
   try {
-    await axios.post(`${API_LOCATION}/account/changepassword`,changePasswordRequest, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${currentAccesToken}`
-      },      
-    });
+    await axios.post(
+      `${API_LOCATION}/account/changepassword`,
+      changePasswordRequest,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${currentAccesToken}`
+        }
+      }
+    );
   } catch (error) {
     console.error(error);
   }

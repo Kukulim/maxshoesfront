@@ -39,4 +39,3 @@ export const saveContactAction = async ({ commit }, currentUser) => {
     console.log(error);
   }
 };
-
