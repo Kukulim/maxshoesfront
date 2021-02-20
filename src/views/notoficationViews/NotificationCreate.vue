@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    Notification Welcome
+    <h1 class="mt-4 mb-4">New Notification:</h1>
   </div>
 </template>
 
@@ -8,4 +8,5 @@
 export default {};
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+</style>
