@@ -18,19 +18,21 @@
           v-for="notification in CurrentUser.notifications"
           :key="notification.id"
         >
-          <th>{{ notification.title }}</th>
-          <td>{{ notification.createdAt }}</td>
-          <td>{{ notification.status }}</td>
+          <th class="notifi-title">{{ notification.title }}</th>
+          <td>{{ notification.createdAt | formatDate}}</td>
+          <td v-if="notification.status == 1" class="notifi-status table-danger text-center">New</td>
+          <td v-if="notification.status == 2" class="notifi-status table-warning text-center">Pending</td>
+          <td v-if="notification.status == 3" class="notifi-status table-success text-center">Cloased</td>
           <td>
             <router-link
               :to="{
                 name: 'NotificationDetails',
-                params: { notification: notification },
+                params: { notification: notification }
               }"
               tag="button"
-              class="btn btn-secondary float-right"
+              class="btn btn-secondary float-right notifi-button"
             >
-              <span>Edit</span>
+              <span>Details</span>
               <i class="fas fa-edit ml-3" />
             </router-link>
           </td>
@@ -47,9 +49,17 @@ export default {
     return {};
   },
   computed: {
-    ...mapState("auth", { CurrentUser: "user" }),
-  },
+    ...mapState("auth", { CurrentUser: "user" })
+  }
 };
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="scss" scoped>
+.notifi-status{
+  max-width: 100px;
+}
+.notifi-title{
+  min-width: 400px;
+}
+
+  </style>

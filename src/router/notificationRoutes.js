@@ -31,7 +31,7 @@ export default [
       import(
         /* webpackChunkName: "NotificationDetails" */ "../views/notoficationViews/NotificationDetails.vue"
       ),
-      props: (r) => ({ notification: r.params.notification }),
+    props: r => ({ notification: r.params.notification })
   },
   {
     path: "/notificationcreate",
