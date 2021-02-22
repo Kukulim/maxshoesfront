@@ -63,9 +63,9 @@ export default {
     return {
       currentUser: {
         email: "",
-        password: "",
+        password: ""
       },
-      showerrormesage: false,
+      showerrormesage: false
     };
   },
   methods: {
@@ -79,11 +79,11 @@ export default {
         this.showerrormesage = true;
       }
       if (response.role == "Employee") {
-      await this.getNotificationAction(response.accessToken);
+        await this.getNotificationAction(response.accessToken);
         this.$router.push({ name: "NotificationEmployeeWelcome" });
       } else this.$router.push({ name: "NotificationWelcome" });
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -1,9 +1,10 @@
 import { notification } from "@/shared";
 
-
-export const getNotificationAction = async ({ commit },accessToken) => {
+export const getNotificationAction = async ({ commit }, accessToken) => {
   try {
-    const notificationsToReturn = await notification.getAllNotifications(accessToken);
+    const notificationsToReturn = await notification.getAllNotifications(
+      accessToken
+    );
     await commit("setCurrentNotifications", notificationsToReturn);
     return notificationsToReturn;
   } catch (error) {

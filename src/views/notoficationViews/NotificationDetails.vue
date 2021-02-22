@@ -13,12 +13,32 @@
       </div>
       <div class="col-md-3">
         <label class="form-label">Status:</label>
+
         <input
           type="text"
-          class="form-control"
+          class="form-control text-center"
           disabled
-          v-model="notification.status"
+          style="background:#E3CBE4"
+          placeholder="new"
+          v-if="notification.status == 1"
         />
+                <input
+          type="text"
+          class="form-control text-center"
+          disabled
+          style="background:#F4DCC0"
+          placeholder="pedding"
+          v-if="notification.status == 2"
+        />
+                <input
+          type="text"
+          class="form-control text-center"
+          style="background:#CBE1BA"
+          disabled
+          placeholder="cloased"
+          v-if="notification.status == 3"
+        />
+
       </div>
       <div class="col-12">
         <label class="form-label">Description:</label>

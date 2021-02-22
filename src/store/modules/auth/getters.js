@@ -16,5 +16,5 @@ export default {
   },
   getCurrentUserRole(state) {
     return state.user.role;
-  },
+  }
 };
