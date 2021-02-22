@@ -13,5 +13,8 @@ export default {
   },
   getCurrentUserContact(state) {
     return state.contact;
-  }
+  },
+  getCurrentUserRole(state) {
+    return state.user.role;
+  },
 };

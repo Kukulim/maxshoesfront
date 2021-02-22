@@ -4,6 +4,7 @@ export const loginAction = async ({ dispatch }, currentUser) => {
   try {
     const logedUser = await data.login(currentUser);
     await dispatch("authorizeAction", logedUser);
+    return logedUser;
   } catch (error) {
     return "error";
   }
