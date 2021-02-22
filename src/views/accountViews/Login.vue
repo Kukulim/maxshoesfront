@@ -70,6 +70,7 @@ export default {
   },
   methods: {
     ...mapActions("auth", ["loginAction"]),
+    ...mapActions("notify", ["getNotificationAction"]),
     async Login(event) {
       event.preventDefault();
 
@@ -78,6 +79,7 @@ export default {
         this.showerrormesage = true;
       }
       if (response.role == "Employee") {
+      await this.getNotificationAction(response.accessToken);
         this.$router.push({ name: "NotificationEmployeeWelcome" });
       } else this.$router.push({ name: "NotificationWelcome" });
     },
