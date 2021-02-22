@@ -10,6 +10,7 @@
             <input
               class="form-control"
               placeholder="email..."
+              type="email"
               v-model="email"
             />
           </div>

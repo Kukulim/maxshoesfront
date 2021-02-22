@@ -19,10 +19,25 @@
           :key="notification.id"
         >
           <th class="notifi-title">{{ notification.title }}</th>
-          <td>{{ notification.createdAt | formatDate}}</td>
-          <td v-if="notification.status == 1" class="notifi-status table-danger text-center">New</td>
-          <td v-if="notification.status == 2" class="notifi-status table-warning text-center">Pending</td>
-          <td v-if="notification.status == 3" class="notifi-status table-success text-center">Cloased</td>
+          <td>{{ notification.createdAt | formatDate }}</td>
+          <td
+            v-if="notification.status == 1"
+            class="notifi-status table-danger text-center"
+          >
+            New
+          </td>
+          <td
+            v-if="notification.status == 2"
+            class="notifi-status table-warning text-center"
+          >
+            Pending
+          </td>
+          <td
+            v-if="notification.status == 3"
+            class="notifi-status table-success text-center"
+          >
+            Cloased
+          </td>
           <td>
             <router-link
               :to="{
@@ -55,11 +70,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.notifi-status{
+.notifi-status {
   max-width: 100px;
 }
-.notifi-title{
+.notifi-title {
   min-width: 400px;
 }
-
-  </style>
+</style>

@@ -3,13 +3,16 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store/store";
 
-import moment from 'moment'
+import moment from "moment";
 
-Vue.filter('formatDate', function(value) {
+Vue.filter("formatDate", function(value) {
   if (value) {
-    return moment(String(value)).format('MM/DD/YYYY')
+    return moment(String(value)).format("MM/DD/YYYY");
   }
 });
+
+import Vuelidate from "vuelidate";
+Vue.use(Vuelidate);
 
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 
