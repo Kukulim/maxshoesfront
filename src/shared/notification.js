@@ -16,8 +16,6 @@ const getAllNotifications = async function(currentAccesToken) {
   }
 };
 
-
 export const notification = {
   getAllNotifications
-
 };

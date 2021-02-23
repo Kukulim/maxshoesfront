@@ -11,10 +11,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr
-          v-for="notification in notifications"
-          :key="notification.id"
-        >
+        <tr v-for="notification in notifications" :key="notification.id">
           <th class="notifi-title">{{ notification.title }}</th>
           <td>{{ notification.createdAt | formatDate }}</td>
           <td
@@ -38,7 +35,7 @@
           <td>
             <router-link
               :to="{
-                name: 'NotificationDetails',
+                name: 'NotificationEdit',
                 params: { notification: notification }
               }"
               tag="button"

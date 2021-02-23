@@ -21,5 +21,5 @@ export default {
   },
   addNotification(state, notyfication) {
     state.user.notifications.push(notyfication);
-  },
+  }
 };

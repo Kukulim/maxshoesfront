@@ -46,10 +46,12 @@
 
           <button type="submit" class="btn btn-primary mt-3 mb-3">Send</button>
 
-                  <router-link to="/notificationlist" class="btn btn-warning mt-3 mb-3 routerbuton">
-          Back
-        </router-link>
-
+          <router-link
+            to="/notificationlist"
+            class="btn btn-warning mt-3 mb-3 routerbuton"
+          >
+            Back
+          </router-link>
         </form>
       </div>
     </div>
@@ -93,13 +95,13 @@ export default {
         description: this.NewNoticifation.description,
         status: 1,
         createdAt: new Date(),
-        token:this.CurrentUser.accessToken
+        token: this.CurrentUser.accessToken
       };
       const response = await this.createNotificationAction(NotifycationToSave);
       if (response == "error") {
-         this.showerrormesage = true;
-       }
-       this.$router.push({ name: "NotificationList" });
+        this.showerrormesage = true;
+      }
+      this.$router.push({ name: "NotificationList" });
     }
   },
   validations: {
@@ -123,7 +125,7 @@ input {
 textarea {
   height: 400px;
 }
-.routerbuton{
-float: right;
+.routerbuton {
+  float: right;
 }
 </style>

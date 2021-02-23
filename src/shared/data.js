@@ -119,14 +119,18 @@ const changePassword = async function(
 
 const createNotification = async function(notification, currentAccesToken) {
   try {
-    const response = await axios.post(`${API_LOCATION}/notification/createnotification`, notification, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${currentAccesToken}`
+    const response = await axios.post(
+      `${API_LOCATION}/notification/createnotification`,
+      notification,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${currentAccesToken}`
+        }
       }
-    });
+    );
     const notificationToReturn = response.data;
-    return notificationToReturn
+    return notificationToReturn;
   } catch (error) {
     console.error(error);
   }
