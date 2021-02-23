@@ -12,7 +12,7 @@ Vue.filter("formatDate", function(value) {
 });
 
 import UUID from "vue-uuid";
- 
+
 Vue.use(UUID);
 
 import Vuelidate from "vuelidate";

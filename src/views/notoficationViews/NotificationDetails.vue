@@ -22,7 +22,7 @@
           placeholder="new"
           v-if="notification.status == 1"
         />
-                <input
+        <input
           type="text"
           class="form-control text-center"
           disabled
@@ -30,7 +30,7 @@
           placeholder="pedding"
           v-if="notification.status == 2"
         />
-                <input
+        <input
           type="text"
           class="form-control text-center"
           style="background:#CBE1BA"
@@ -38,7 +38,6 @@
           placeholder="cloased"
           v-if="notification.status == 3"
         />
-
       </div>
       <div class="col-12">
         <label class="form-label">Description:</label>

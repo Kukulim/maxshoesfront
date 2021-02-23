@@ -18,5 +18,8 @@ export default {
   },
   setCurrentUserContact(state, tempContact) {
     state.contact = tempContact;
-  }
+  },
+  addNotification(state, notyfication) {
+    state.user.notifications.push(notyfication);
+  },
 };

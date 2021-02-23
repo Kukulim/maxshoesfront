@@ -40,3 +40,16 @@ export const saveContactAction = async ({ commit }, currentUser) => {
     console.log(error);
   }
 };
+
+export const createNotificationAction = async ({ commit },  notification) => {
+  try {
+    const response = await data.createNotification(
+      notification, notification.token
+    );
+    await commit("addNotification", response);
+    return response;
+  } catch (error) {
+    console.log(error)
+    return "error";
+  }
+};

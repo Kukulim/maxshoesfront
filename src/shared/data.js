@@ -84,7 +84,6 @@ const sendPasswordResetEmail = async function(UserEmail) {
 };
 
 const saveContact = async function(currentUser, currentAccesToken) {
-  console.log(currentUser);
   try {
     await axios.post(`${API_LOCATION}/account/editcontact`, currentUser, {
       headers: {
@@ -118,6 +117,21 @@ const changePassword = async function(
   }
 };
 
+const createNotification = async function(notification, currentAccesToken) {
+  try {
+    const response = await axios.post(`${API_LOCATION}/notification/createnotification`, notification, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${currentAccesToken}`
+      }
+    });
+    const notificationToReturn = response.data;
+    return notificationToReturn
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const data = {
   login,
   register,
@@ -125,5 +139,6 @@ export const data = {
   sendConfirmEmail,
   sendPasswordResetEmail,
   saveContact,
-  changePassword
+  changePassword,
+  createNotification
 };
