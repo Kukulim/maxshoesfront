@@ -8,7 +8,7 @@
           type="email"
           class="form-control"
           disabled
-          v-model="notification.title"
+          v-model="mynotification.title"
         />
       </div>
       <div class="col-md-3">
@@ -18,25 +18,25 @@
           type="text"
           class="form-control text-center"
           disabled
-          style="background:#E3CBE4"
+          style="background: #e3cbe4"
           placeholder="new"
-          v-if="notification.status == 1"
+          v-if="mynotification.status == 1"
         />
         <input
           type="text"
           class="form-control text-center"
           disabled
-          style="background:#F4DCC0"
+          style="background: #f4dcc0"
           placeholder="pedding"
-          v-if="notification.status == 2"
+          v-if="mynotification.status == 2"
         />
         <input
           type="text"
           class="form-control text-center"
-          style="background:#CBE1BA"
+          style="background: #cbe1ba"
           disabled
           placeholder="cloased"
-          v-if="notification.status == 3"
+          v-if="mynotification.status == 3"
         />
       </div>
       <div class="col-12">
@@ -44,7 +44,7 @@
         <textarea
           disabled
           class="form-control"
-          v-model="notification.description"
+          v-model="mynotification.description"
         ></textarea>
       </div>
 
@@ -53,8 +53,14 @@
         <textarea
           disabled
           class="form-control"
-          v-model="notification.response"
+          v-model="mynotification.response"
         ></textarea>
+      </div>
+
+      <div v-if="mynotification.fileUrl" class="col-sm">
+        <a :href="imagelink" class="btn btn-primary mt-2"
+          >Download attachment</a
+        >
       </div>
 
       <div class="col-12">
@@ -67,12 +73,25 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import { API_LOCATION } from "../../../config";
+
 export default {
+  data() {
+    return {
+      imagelink:
+        `${API_LOCATION}/notification/DownloadFile/` +
+        this.mynotification.fileUrl,
+    };
+  },
   props: {
-    notification: {
-      default: null
-    }
-  }
+    mynotification: {
+      default: null,
+    },
+  },
+  computed: {
+    ...mapState("auth", { CurrentUser: "user" }),
+  },
 };
 </script>
 

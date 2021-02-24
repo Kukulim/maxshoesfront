@@ -12,7 +12,7 @@
               v-model.trim="$v.NewNoticifation.title.$model"
               :class="{
                 'is-invalid': $v.NewNoticifation.title.$error,
-                'is-valid': !$v.NewNoticifation.title.$invalid
+                'is-valid': !$v.NewNoticifation.title.$invalid,
               }"
             />
             <div class="valid-feedback">Title is ok.</div>
@@ -32,7 +32,7 @@
               v-model.trim="$v.NewNoticifation.description.$model"
               :class="{
                 'is-invalid': $v.NewNoticifation.description.$error,
-                'is-valid': !$v.NewNoticifation.description.$invalid
+                'is-valid': !$v.NewNoticifation.description.$invalid,
               }"
             />
             <div class="valid-feedback">Description is ok.</div>
@@ -42,6 +42,18 @@
               >
               <span />
             </div>
+          </div>
+
+          <div class="form-group input-wrapper">
+            <label>Image</label>
+            <input
+              type="file"
+              accept="image/jpeg,application/pdf"
+              class="form-control"
+              placeholder="file url..."
+              id="file-input"
+              @change="uploadImage($event)"
+            />
           </div>
 
           <button type="submit" class="btn btn-primary mt-3 mb-3">Send</button>
@@ -62,6 +74,7 @@
 import { mapActions, mapState } from "vuex";
 import { required } from "vuelidate/lib/validators";
 import { uuid } from "vue-uuid";
+import { notification } from "@/shared";
 
 export default {
   data() {
@@ -71,13 +84,14 @@ export default {
         userid: "",
         title: "",
         createdat: "",
-        description: ""
+        description: "",
+        fileUrl: "",
       },
-      showerrormesage: false
+      showerrormesage: false,
     };
   },
   computed: {
-    ...mapState("auth", { CurrentUser: "user" })
+    ...mapState("auth", { CurrentUser: "user" }),
   },
   methods: {
     ...mapActions("auth", ["loginAction"]),
@@ -88,32 +102,44 @@ export default {
       if (this.$v.$invalid) {
         return;
       }
+
       const NotifycationToSave = {
+        fileUrl: this.NewNoticifation.fileUrl,
         id: this.NewNoticifation.id,
         userid: this.CurrentUser.userId,
         title: this.NewNoticifation.title,
         description: this.NewNoticifation.description,
         status: 1,
         createdAt: new Date(),
-        token: this.CurrentUser.accessToken
+        token: this.CurrentUser.accessToken,
       };
-      const response = await this.createNotificationAction(NotifycationToSave);
-      if (response == "error") {
+      const resp = await this.createNotificationAction(NotifycationToSave);
+      if (resp == "error") {
         this.showerrormesage = true;
       }
       this.$router.push({ name: "NotificationList" });
-    }
+    },
+    async uploadImage(event) {
+      const data = new FormData();
+      data.append("name", "my-picture");
+      data.append("file", event.target.files[0]);
+      const response = await notification.updateFile(
+        data,
+        this.CurrentUser.accessToken
+      );
+      this.NewNoticifation.fileUrl = response.fileNameToInsert;
+    },
   },
   validations: {
     NewNoticifation: {
       title: {
-        required
+        required,
       },
       description: {
-        required
-      }
-    }
-  }
+        required,
+      },
+    },
+  },
 };
 </script>
 

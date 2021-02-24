@@ -16,6 +16,24 @@ const getAllNotifications = async function(currentAccesToken) {
   }
 };
 
+const updateFile = async function(image,currentAccesToken) {
+  try {
+    const response = await axios.post(`${API_LOCATION}/notification/UploadFile`, image, {
+      headers: {
+        'Content-Type' : 'image/jpeg,application/pdf',
+        Authorization: `Bearer ${currentAccesToken}`
+      }, 
+    });
+    return response.data;
+
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+
 export const notification = {
-  getAllNotifications
+  getAllNotifications,
+  updateFile,
 };

@@ -80,7 +80,7 @@ export default {
       }
       if (response.role == "Employee") {
         await this.getNotificationAction(response.accessToken);
-        this.$router.push({ name: "NotificationEmployeeWelcome" });
+        this.$router.push({ name: "NotificacionsAllCustomers" });
       } else this.$router.push({ name: "NotificationWelcome" });
     }
   }

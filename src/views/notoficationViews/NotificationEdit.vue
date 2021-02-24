@@ -53,9 +53,10 @@
       </div>
 
       <div class="col-12">
+        <button type="submit" class="btn btn-primary mt-3 mb-3">Save</button>
         <router-link
           to="/notificacionsallcustomers"
-          class="btn btn-warning mt-2"
+          class="btn btn-warning mt-2 routerbuton"
         >
           Back
         </router-link>
@@ -111,5 +112,8 @@ textarea {
 }
 .cloased {
   background: #cbe1ba;
+}
+.routerbuton {
+  float: right;
 }
 </style>

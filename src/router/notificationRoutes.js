@@ -31,7 +31,7 @@ export default [
       import(
         /* webpackChunkName: "NotificationDetails" */ "../views/notoficationViews/NotificationDetails.vue"
       ),
-    props: r => ({ notification: r.params.notification })
+    props: r => ({ mynotification: r.params.mynotification })
   },
   {
     path: "/notificationcreate",
@@ -53,17 +53,6 @@ export default [
     component: () =>
       import(
         /* webpackChunkName: "NotificationCreate" */ "../views/notoficationViews/NotificacionsAllCustomers.vue"
-      )
-  },
-  {
-    path: "/notificationemployeewelcome",
-    name: "NotificationEmployeeWelcome",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(
-        /* webpackChunkName: "NotificationCreate" */ "../views/notoficationViews/NotificationEmployeeWelcome.vue"
       )
   },
   {

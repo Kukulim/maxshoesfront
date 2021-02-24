@@ -42,7 +42,7 @@
             <router-link
               :to="{
                 name: 'NotificationDetails',
-                params: { notification: notification }
+                params: { mynotification: notification }
               }"
               tag="button"
               class="btn btn-secondary float-right notifi-button"
