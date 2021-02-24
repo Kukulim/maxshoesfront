@@ -74,13 +74,13 @@
 
 <script>
 import { mapState } from "vuex";
-import { API_LOCATION } from "../../../config";
+import { API_DOWNLOAD_LOCATION } from "../../../config";
 
 export default {
   data() {
     return {
       imagelink:
-        `${API_LOCATION}/notification/DownloadFile/` +
+        `${API_DOWNLOAD_LOCATION}` +
         this.mynotification.fileUrl,
     };
   },

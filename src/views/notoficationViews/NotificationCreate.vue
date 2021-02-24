@@ -45,15 +45,18 @@
           </div>
 
           <div class="form-group input-wrapper">
-            <label>Image</label>
-            <input
+            <label class="btn btn-danger">Add a file to notification
+                          <input
               type="file"
               accept="image/jpeg,application/pdf"
               class="form-control"
               placeholder="file url..."
               id="file-input"
               @change="uploadImage($event)"
+              hidden
             />
+            </label>
+            <small id="emailHelp" class="form-text text-muted">Optional</small>
           </div>
 
           <button type="submit" class="btn btn-primary mt-3 mb-3">Send</button>

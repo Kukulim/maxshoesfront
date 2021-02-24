@@ -4,7 +4,7 @@
     <form class="row g-3">
       <div class="col-md-9">
         <label class="form-label">Title:</label>
-        <input type="email" class="form-control" v-model="notification.title" />
+        <input type="email" class="form-control" v-model="notification.title" disabled/>
       </div>
       <div class="col-md-3">
         <label class="form-label">Status:</label>
@@ -41,6 +41,7 @@
         <textarea
           class="form-control"
           v-model="notification.description"
+          disabled
         ></textarea>
       </div>
 
@@ -50,6 +51,12 @@
           class="form-control"
           v-model="notification.response"
         ></textarea>
+      </div>
+
+            <div v-if="notification.fileUrl" class="col-sm">
+        <a :href="imagelink" class="btn btn-primary mt-2"
+          >Download attachment</a
+        >
       </div>
 
       <div class="col-12">
@@ -66,10 +73,15 @@
 </template>
 
 <script>
+import { API_DOWNLOAD_LOCATION } from "../../../config";
+
 export default {
   data() {
     return {
-      selectedclass: ""
+      selectedclass: "",
+            imagelink:
+        `${API_DOWNLOAD_LOCATION}` +
+        this.notification.fileUrl,
     };
   },
   props: {
@@ -92,6 +104,7 @@ export default {
   },
   created: function() {
     this.selectclass();
+    console.log(this.notification)
   }
 };
 </script>
