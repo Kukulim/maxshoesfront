@@ -79,19 +79,17 @@ import { API_DOWNLOAD_LOCATION } from "../../../config";
 export default {
   data() {
     return {
-      imagelink:
-        `${API_DOWNLOAD_LOCATION}` +
-        this.mynotification.fileUrl,
+      imagelink: `${API_DOWNLOAD_LOCATION}` + this.mynotification.fileUrl
     };
   },
   props: {
     mynotification: {
-      default: null,
-    },
+      default: null
+    }
   },
   computed: {
-    ...mapState("auth", { CurrentUser: "user" }),
-  },
+    ...mapState("auth", { CurrentUser: "user" })
+  }
 };
 </script>
 

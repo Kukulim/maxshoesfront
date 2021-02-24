@@ -88,26 +88,25 @@ export default {
   data() {
     return {
       selectedclass: "",
-      imagelink: `${API_DOWNLOAD_LOCATION}` + this.notification.fileUrl,
+      imagelink: `${API_DOWNLOAD_LOCATION}` + this.notification.fileUrl
     };
   },
   props: {
     notification: {
-      default: null,
-    },
+      default: null
+    }
   },
   methods: {
     ...mapActions("notify", ["updateNotificationAction"]),
 
     async EditNotification(event) {
-
       event.preventDefault();
       this.notification.accessToken = this.CurrentUser.accessToken;
-      this.notification.status = parseInt(this.notification.status)
+      this.notification.status = parseInt(this.notification.status);
       await this.updateNotificationAction(this.notification);
       this.$router.push({ name: "NotificacionsAllCustomers" });
     },
-    selectclass: function () {
+    selectclass: function() {
       if (this.notification.status == 1) {
         this.selectedclass = "form-select form-control newnotify";
       }
@@ -117,14 +116,14 @@ export default {
       if (this.notification.status == 3) {
         this.selectedclass = "form-select form-control cloased";
       }
-    },
+    }
   },
-  created: function () {
+  created: function() {
     this.selectclass();
   },
-    computed: {
-    ...mapState("auth", { CurrentUser: "user" }),
-  },
+  computed: {
+    ...mapState("auth", { CurrentUser: "user" })
+  }
 };
 </script>
 

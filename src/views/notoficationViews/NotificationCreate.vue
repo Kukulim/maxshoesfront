@@ -12,7 +12,7 @@
               v-model.trim="$v.NewNoticifation.title.$model"
               :class="{
                 'is-invalid': $v.NewNoticifation.title.$error,
-                'is-valid': !$v.NewNoticifation.title.$invalid,
+                'is-valid': !$v.NewNoticifation.title.$invalid
               }"
             />
             <div class="valid-feedback">Title is ok.</div>
@@ -32,7 +32,7 @@
               v-model.trim="$v.NewNoticifation.description.$model"
               :class="{
                 'is-invalid': $v.NewNoticifation.description.$error,
-                'is-valid': !$v.NewNoticifation.description.$invalid,
+                'is-valid': !$v.NewNoticifation.description.$invalid
               }"
             />
             <div class="valid-feedback">Description is ok.</div>
@@ -45,16 +45,17 @@
           </div>
 
           <div class="form-group input-wrapper">
-            <label class="btn btn-danger">Add a file to notification
-                          <input
-              type="file"
-              accept="image/jpeg,application/pdf"
-              class="form-control"
-              placeholder="file url..."
-              id="file-input"
-              @change="uploadImage($event)"
-              hidden
-            />
+            <label class="btn btn-danger"
+              >Add a file to notification
+              <input
+                type="file"
+                accept="image/jpeg,application/pdf"
+                class="form-control"
+                placeholder="file url..."
+                id="file-input"
+                @change="uploadImage($event)"
+                hidden
+              />
             </label>
             <small id="emailHelp" class="form-text text-muted">Optional</small>
           </div>
@@ -88,13 +89,13 @@ export default {
         title: "",
         createdat: "",
         description: "",
-        fileUrl: "",
+        fileUrl: ""
       },
-      showerrormesage: false,
+      showerrormesage: false
     };
   },
   computed: {
-    ...mapState("auth", { CurrentUser: "user" }),
+    ...mapState("auth", { CurrentUser: "user" })
   },
   methods: {
     ...mapActions("auth", ["loginAction"]),
@@ -114,7 +115,7 @@ export default {
         description: this.NewNoticifation.description,
         status: 1,
         createdAt: new Date(),
-        token: this.CurrentUser.accessToken,
+        token: this.CurrentUser.accessToken
       };
       const resp = await this.createNotificationAction(NotifycationToSave);
       if (resp == "error") {
@@ -131,18 +132,18 @@ export default {
         this.CurrentUser.accessToken
       );
       this.NewNoticifation.fileUrl = response.fileNameToInsert;
-    },
+    }
   },
   validations: {
     NewNoticifation: {
       title: {
-        required,
+        required
       },
       description: {
-        required,
-      },
-    },
-  },
+        required
+      }
+    }
+  }
 };
 </script>
 

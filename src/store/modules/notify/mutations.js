@@ -6,5 +6,5 @@ export default {
     const index = state.notifications.findIndex(h => h.id === notification.id);
     state.notifications.splice(index, 1, notification);
     state.notifications = [...state.notifications];
-  },
+  }
 };

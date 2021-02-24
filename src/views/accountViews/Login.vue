@@ -4,7 +4,7 @@
     <div class="row container">
       <div class="col">
         <form @submit="Login($event)">
-         <div class="form-group input-wrapper">
+          <div class="form-group input-wrapper">
             <label>Email:</label>
             <i class="fa fa-envelope input-icon"></i>
             <input
@@ -92,12 +92,7 @@
 
 <script>
 import { mapActions } from "vuex";
-import {
-  required,
-  minLength,
-  email,
-  helpers
-} from "vuelidate/lib/validators";
+import { required, minLength, email, helpers } from "vuelidate/lib/validators";
 
 var numberRegex = new RegExp("(?=.*[0-9])");
 var UpperRegex = new RegExp("(?=.*[A-Z])");
