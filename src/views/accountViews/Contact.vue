@@ -103,15 +103,37 @@
               placeholder="phone number..."
             />
           </div>
-          <div>
-            <button type="submit" class="btn btn-primary mt-3 mb-3">
-              Submit
-            </button>
+
+          <div class="form-group">
+            <label>Is email confirmed:</label>
+            <div>
+              <div
+                v-if="CurrentUser.isEmailConfirmed == true"
+                class="btn btn-success"
+              >
+                Is confirmed
+              </div>
+              <router-link
+                v-if="CurrentUser.isEmailConfirmed == true"
+                to="/changepassword"
+                class="btn btn-warning ml-5"
+              >
+                Change Password
+              </router-link>
+            </div>
+            <div>
+              <router-link
+                v-if="CurrentUser.isEmailConfirmed == false"
+                to="/confirmemail"
+                class="btn btn-warning"
+              >
+                No, please click to confirm.
+              </router-link>
+            </div>
           </div>
+
           <div>
-            <router-link to="/changepassword" class="btn btn-warning mt-5">
-              Change Password
-            </router-link>
+            <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </div>
       </div>

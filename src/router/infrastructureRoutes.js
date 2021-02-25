@@ -18,7 +18,7 @@ export default [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(
-        /* webpackChunkName: "WelcomePAge" */ "../views/infrastructureViews/WelcomePage.vue"
+        /* webpackChunkName: "WelcomePage" */ "../views/infrastructureViews/WelcomePage.vue"
       )
   }
 ];

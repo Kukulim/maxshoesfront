@@ -18,7 +18,9 @@
         If you do not receive a confirmation email, please click button below to
         resend confirmation link to your email address.
       </p>
-      <button class="btn btn-primary" @click="sendEmail()">Click me !</button>
+      <button class="btn btn-primary mt-1 mb-1" @click="sendEmail()">
+        Click me !
+      </button>
     </div>
     <div class="col" v-if="sended">
       <p class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -65,7 +67,6 @@ export default {
       }
       this.sended = true;
       this.countDownTimer();
-      this.removeTokens();
     },
 
     countDownTimer() {
@@ -75,7 +76,8 @@ export default {
           this.countDownTimer();
         }, 1000);
         setTimeout(() => {
-          this.$router.push({ name: "Login" });
+          this.$router.push({ name: "Login" }).catch(() => {});
+          return;
         }, 10000);
       }
     }
