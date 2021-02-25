@@ -15,17 +15,29 @@
       <tbody>
         <tr v-for="employee in CurrentEmployees" :key="employee.id">
           <th class="notifi-title">{{ employee.userName }}</th>
-          <td></td>
+          <td>
+            <router-link
+              :to="{
+                name: 'EditEmployee',
+                params: { employee: employee }
+              }"
+              tag="button"
+              class="btn btn-danger"
+            >
+
+              <i class="fas fa-edit" />
+            </router-link>
+          </td>
           <td>
             <button
-            @click="setCurrentEmployee(employee)"
+              @click="setCurrentEmployee(employee)"
               class="btn btn-danger"
               v-confirm="{
                 loader: true,
                 ok: okCallback,
                 animation: 'fade',
                 okText: 'Delete',
-                message: 'Are You sure You want delete employee ?',
+                message: 'Are You sure You want delete employee ?'
               }"
             >
               <i class="fas fa-trash"></i>
@@ -42,12 +54,12 @@ import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
-      CurrentEmployee:null,
+      CurrentEmployee: null
     };
   },
   computed: {
     ...mapState("emplo", { CurrentEmployees: "employees" }),
-    ...mapState("auth", { user: "user" }),
+    ...mapState("auth", { user: "user" })
   },
   methods: {
     ...mapActions("emplo", ["deleteEmployeeAction"]),
@@ -55,13 +67,13 @@ export default {
       this.CurrentEmployee.accessToken = this.user.accessToken;
       await this.deleteEmployeeAction(this.CurrentEmployee);
     },
-    okCallback: function (dialog) {
-      this.deleteEmployee()
-      dialog.loading(false); 
-      dialog.close(); 
+    okCallback: function(dialog) {
+      this.deleteEmployee();
+      dialog.loading(false);
+      dialog.close();
     },
-    setCurrentEmployee(employee){
-      this.CurrentEmployee=employee
+    setCurrentEmployee(employee) {
+      this.CurrentEmployee = employee;
     }
   }
 };

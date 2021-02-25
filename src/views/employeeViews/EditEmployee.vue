@@ -10,20 +10,20 @@
             <input
               class="form-control"
               placeholder="name..."
-              v-model.trim="$v.formUser.userName.$model"
+              v-model.trim="$v.employee.userName.$model"
               :class="{
-                'is-invalid': $v.formUser.userName.$error,
-                'is-valid': !$v.formUser.userName.$invalid
+                'is-invalid': $v.employee.userName.$error,
+                'is-valid': !$v.employee.userName.$invalid,
               }"
             />
             <div class="valid-feedback">User name is ok.</div>
             <div class="invalid-feedback">
-              <span v-if="!$v.formUser.userName.required"
+              <span v-if="!$v.employee.userName.required"
                 >User name is required.</span
               >
-              <span v-if="!$v.formUser.userName.minLength"
+              <span v-if="!$v.employee.userName.minLength"
                 >User name must be atleast
-                {{ $v.formUser.userName.$params.minLength.min }}
+                {{ $v.employee.userName.$params.minLength.min }}
                 characters.</span
               >
               <span />
@@ -35,46 +35,17 @@
             <input
               class="form-control"
               placeholder="email..."
-              v-model.trim="$v.formUser.email.$model"
+              v-model.trim="$v.employee.email.$model"
               :class="{
-                'is-invalid': $v.formUser.email.$error,
-                'is-valid': !$v.formUser.email.$invalid
+                'is-invalid': $v.employee.email.$error,
+                'is-valid': !$v.employee.email.$invalid,
               }"
             />
             <div class="valid-feedback">Email is ok.</div>
             <div class="invalid-feedback">
-              <span v-if="!$v.formUser.email.required">Email is required.</span>
-              <span v-if="!$v.formUser.email.minLength"
+              <span v-if="!$v.employee.email.required">Email is required.</span>
+              <span v-if="!$v.employee.email.minLength"
                 >Email must be a valid email address.</span
-              >
-              <span />
-            </div>
-          </div>
-          <div class="form-group input-wrapper">
-            <label>Password</label>
-            <input
-              class="form-control"
-              placeholder="password..."
-              v-model.trim="$v.formUser.password.$model"
-              :class="{
-                'is-invalid': $v.formUser.password.$error,
-                'is-valid': !$v.formUser.password.$invalid
-              }"
-            />
-            <div class="valid-feedback">Password is ok.</div>
-            <div class="invalid-feedback">
-              <span v-if="!$v.formUser.password.required"
-                >Password is required.</span
-              >
-              <span v-if="!$v.formUser.password.minLength"
-                >Password must be atleast
-                {{ $v.formUser.password.$params.minLength.min }} charakters <br
-              /></span>
-              <span v-if="!$v.formUser.password.alpha"
-                >Password must contain at least 1 numeric character <br
-              /></span>
-              <span v-if="!$v.formUser.password.beta"
-                >Password must contain at least 1 uppercase character</span
               >
               <span />
             </div>
@@ -90,7 +61,7 @@
             <input
               type="text"
               class="form-control"
-              v-model="formUser.contact.firstName"
+              v-model="employee.contact.firstName"
               placeholder="fist name..."
             />
           </div>
@@ -100,7 +71,7 @@
             <input
               type="text"
               class="form-control"
-              v-model="formUser.contact.lastName"
+              v-model="employee.contact.lastName"
               placeholder="last name..."
             />
           </div>
@@ -110,7 +81,7 @@
             <input
               type="text"
               class="form-control"
-              v-model="formUser.contact.state"
+              v-model="employee.contact.state"
               placeholder="state..."
             />
           </div>
@@ -120,7 +91,7 @@
             <input
               type="text"
               class="form-control"
-              v-model="formUser.contact.zipCode"
+              v-model="employee.contact.zipCode"
               placeholder="zip code..."
             />
           </div>
@@ -130,7 +101,7 @@
             <input
               type="text"
               class="form-control"
-              v-model="formUser.contact.city"
+              v-model="employee.contact.city"
               placeholder="city..."
             />
           </div>
@@ -141,7 +112,7 @@
             <input
               type="text"
               class="form-control"
-              v-model="formUser.contact.street"
+              v-model="employee.contact.street"
               placeholder="street..."
             />
           </div>
@@ -150,7 +121,7 @@
             <input
               type="number"
               class="form-control"
-              v-model="formUser.contact.houseNumber"
+              v-model="employee.contact.houseNumber"
               placeholder="house number..."
             />
           </div>
@@ -159,7 +130,7 @@
             <input
               type="number"
               class="form-control"
-              v-model="formUser.contact.apartmentNumber"
+              v-model="employee.contact.apartmentNumber"
               placeholder="apartment number..."
             />
           </div>
@@ -169,7 +140,7 @@
             <input
               type="number"
               class="form-control"
-              v-model="formUser.contact.phoneNumber"
+              v-model="employee.contact.phoneNumber"
               placeholder="phone number..."
             />
           </div>
@@ -184,81 +155,51 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from "vuex";
-import { uuid } from "vue-uuid";
-import { required, minLength, email, helpers } from "vuelidate/lib/validators";
-
-var numberRegex = new RegExp("(?=.*[0-9])");
-var UpperRegex = new RegExp("(?=.*[A-Z])");
-
-const alpha = helpers.regex("alpha", numberRegex);
-const beta = helpers.regex("alpha", UpperRegex);
+import { mapGetters, mapActions } from "vuex";
+import { required, minLength, email } from "vuelidate/lib/validators";
 
 export default {
   data() {
-    return {
-      formUser: {
-        userName: "",
-        isEmailConfirmed: true,
-        email: "",
-        password: "",
-        role: "Employee",
-        contact: {
-          Id: uuid.v1(),
-          city: "",
-          phoneNumber: "",
-          zipCode: "",
-          apartmentNumber: 0,
-          state: "",
-          firstName: "",
-          lastName: "",
-          houseNumber: 0,
-          street: ""
-        }
-      }
-    };
+    return {};
+  },
+  props: {
+    employee: {
+      default: null,
+    },
   },
   computed: {
-    ...mapState("auth", { contact: "contact" }),
-    ...mapGetters("auth", { CurrentUserAccessToken: "getCurrentaccessToken" })
+    ...mapGetters("auth", { CurrentUserAccessToken: "getCurrentaccessToken" }),
   },
   methods: {
-    ...mapActions("auth", ["saveContactAction"]),
-    ...mapActions("emplo", ["createEmployeeAction"]),
+    ...mapActions("emplo", ["editEmployeeAction"]),
     async SaveChanges(event) {
       event.preventDefault();
       this.$v.$touch();
       if (this.$v.$invalid) {
         return;
       }
-      this.formUser.contact.apartmentNumber = parseInt(
-        this.formUser.contact.apartmentNumber
+      this.employee.contact.apartmentNumber = parseInt(
+        this.employee.contact.apartmentNumber
       );
-      this.formUser.contact.houseNumber = parseInt(
-        this.formUser.contact.houseNumber
+      this.employee.contact.houseNumber = parseInt(
+        this.employee.contact.houseNumber
       );
-      this.formUser.accessToken = this.CurrentUserAccessToken;
-      await this.createEmployeeAction(this.formUser);
+      this.employee.accessToken = this.CurrentUserAccessToken;
+      await this.editEmployeeAction(this.employee);
       this.$router.push({ name: "EmployeesList" });
-    }
+    },
   },
   validations: {
-    formUser: {
-      password: {
-        required,
-        minLength: minLength(8),
-        alpha,
-        beta
-      },
+    employee: {
       email: {
         required,
-        email
+        email,
       },
       userName: {
         required,
-        minLength: minLength(6)
-      }
-    }
+        minLength: minLength(6),
+      },
+    },
   }
 };
 </script>

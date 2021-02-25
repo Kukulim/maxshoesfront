@@ -156,16 +156,38 @@ const getAllemployees = async function(currentAccesToken) {
 
 const deleteEmployee = async function(employee, currentAccesToken) {
   try {
-    await axios.post(
-      `${API_LOCATION}/account/remove`,
-      employee,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${currentAccesToken}`
-        }
+    await axios.post(`${API_LOCATION}/account/remove`, employee, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${currentAccesToken}`
       }
-    );
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const createEmployee = async function(employee, currentAccesToken) {
+  try {
+    await axios.post(`${API_LOCATION}/employee/createemployee`, employee, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${currentAccesToken}`
+      }
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const editEmployee = async function(employee, currentAccesToken) {
+  try {
+    await axios.post(`${API_LOCATION}/employee/editemployee`, employee, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${currentAccesToken}`
+      }
+    });
   } catch (error) {
     console.error(error);
   }
@@ -181,5 +203,7 @@ export const data = {
   changePassword,
   createNotification,
   getAllemployees,
-  deleteEmployee
+  deleteEmployee,
+  createEmployee,
+  editEmployee
 };

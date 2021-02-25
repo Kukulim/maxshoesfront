@@ -22,7 +22,6 @@ export const refreshAction = async ({ dispatch, state }) => {
     state.refreshToken,
     state.accessToken
   );
-  console.log(logedUser.refreshToken);
   dispatch("authorizeAction", logedUser);
 };
 export const refreshToken = async ({ commit, dispatch, state }) => {

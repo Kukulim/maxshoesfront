@@ -155,12 +155,10 @@ import {
   sameAs,
   helpers
 } from "vuelidate/lib/validators";
-
-var numberRegex = new RegExp("(?=.*[0-9])");
-var UpperRegex = new RegExp("(?=.*[A-Z])");
+import { numberRegex, upperRegex  } from "@/shared"
 
 const alpha = helpers.regex("alpha", numberRegex);
-const beta = helpers.regex("alpha", UpperRegex);
+const beta = helpers.regex("alpha", upperRegex);
 
 export default {
   data() {
