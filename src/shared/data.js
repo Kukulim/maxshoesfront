@@ -136,6 +136,41 @@ const createNotification = async function(notification, currentAccesToken) {
   }
 };
 
+const getAllemployees = async function(currentAccesToken) {
+  try {
+    const response = await axios.get(
+      `${API_LOCATION}/employee/getallemployee`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${currentAccesToken}`
+        }
+      }
+    );
+    const notificationToReturn = response.data;
+    return notificationToReturn;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const deleteEmployee = async function(employee, currentAccesToken) {
+  try {
+    await axios.post(
+      `${API_LOCATION}/account/remove`,
+      employee,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${currentAccesToken}`
+        }
+      }
+    );
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const data = {
   login,
   register,
@@ -144,5 +179,7 @@ export const data = {
   sendPasswordResetEmail,
   saveContact,
   changePassword,
-  createNotification
+  createNotification,
+  getAllemployees,
+  deleteEmployee
 };

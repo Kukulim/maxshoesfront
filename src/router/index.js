@@ -6,12 +6,14 @@ Vue.use(VueRouter);
 import AccountRoutes from "@/router/accountRoutes";
 import InfrastructureRoutes from "@/router/infrastructureRoutes";
 import NotificationRoutes from "@/router/notificationRoutes";
+import EmployeeRoutes from "@/router/employeeRoutes";
 
 let allRoutes = [];
 allRoutes = allRoutes
   .concat(AccountRoutes)
   .concat(NotificationRoutes)
-  .concat(InfrastructureRoutes);
+  .concat(InfrastructureRoutes)
+  .concat(EmployeeRoutes);
 
 const routes = allRoutes;
 

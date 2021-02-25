@@ -13,7 +13,7 @@
               v-model.trim="$v.currentUser.email.$model"
               :class="{
                 'is-invalid': $v.currentUser.email.$error,
-                'is-valid': !$v.currentUser.email.$invalid
+                'is-valid': !$v.currentUser.email.$invalid,
               }"
             />
             <div class="valid-feedback">Email is ok.</div>
@@ -37,7 +37,7 @@
               v-model.trim="$v.currentUser.password.$model"
               :class="{
                 'is-invalid': $v.currentUser.password.$error,
-                'is-valid': !$v.currentUser.password.$invalid
+                'is-valid': !$v.currentUser.password.$invalid,
               }"
             />
             <div class="valid-feedback">Password is ok.</div>
@@ -105,14 +105,16 @@ export default {
     return {
       currentUser: {
         email: "",
-        password: ""
+        password: "",
       },
-      showerrormesage: false
+      showerrormesage: false,
     };
   },
   methods: {
     ...mapActions("auth", ["loginAction"]),
     ...mapActions("notify", ["getNotificationAction"]),
+    ...mapActions("emplo", ["getAllEmployeesAction"]),
+
     async Login(event) {
       event.preventDefault();
 
@@ -128,8 +130,12 @@ export default {
       if (response.role == "Employee") {
         await this.getNotificationAction(response.accessToken);
         this.$router.push({ name: "NotificacionsAllCustomers" });
+      }
+      else if (response.role == "MaxShopOwner") {
+        await this.getAllEmployeesAction(response.accessToken);
+        this.$router.push({ name: "EmployeesList" });
       } else this.$router.push({ name: "NotificationWelcome" });
-    }
+    },
   },
   validations: {
     currentUser: {
@@ -137,14 +143,14 @@ export default {
         required,
         minLength: minLength(8),
         alpha,
-        beta
+        beta,
       },
       email: {
         required,
-        email
-      }
-    }
-  }
+        email,
+      },
+    },
+  },
 };
 </script>
 
