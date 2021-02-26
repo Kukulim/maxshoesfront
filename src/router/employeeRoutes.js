@@ -33,6 +33,6 @@ export default [
       import(
         /* webpackChunkName: "EditEmployee" */ "../views/employeeViews/EditEmployee.vue"
       ),
-      props: r => ({ employee: r.params.employee })
-  },
+    props: r => ({ employee: r.params.employee })
+  }
 ];

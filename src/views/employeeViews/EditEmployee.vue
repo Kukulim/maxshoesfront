@@ -13,7 +13,7 @@
               v-model.trim="$v.employee.userName.$model"
               :class="{
                 'is-invalid': $v.employee.userName.$error,
-                'is-valid': !$v.employee.userName.$invalid,
+                'is-valid': !$v.employee.userName.$invalid
               }"
             />
             <div class="valid-feedback">User name is ok.</div>
@@ -38,7 +38,7 @@
               v-model.trim="$v.employee.email.$model"
               :class="{
                 'is-invalid': $v.employee.email.$error,
-                'is-valid': !$v.employee.email.$invalid,
+                'is-valid': !$v.employee.email.$invalid
               }"
             />
             <div class="valid-feedback">Email is ok.</div>
@@ -164,11 +164,11 @@ export default {
   },
   props: {
     employee: {
-      default: null,
-    },
+      default: null
+    }
   },
   computed: {
-    ...mapGetters("auth", { CurrentUserAccessToken: "getCurrentaccessToken" }),
+    ...mapGetters("auth", { CurrentUserAccessToken: "getCurrentaccessToken" })
   },
   methods: {
     ...mapActions("emplo", ["editEmployeeAction"]),
@@ -187,19 +187,19 @@ export default {
       this.employee.accessToken = this.CurrentUserAccessToken;
       await this.editEmployeeAction(this.employee);
       this.$router.push({ name: "EmployeesList" });
-    },
+    }
   },
   validations: {
     employee: {
       email: {
         required,
-        email,
+        email
       },
       userName: {
         required,
-        minLength: minLength(6),
-      },
-    },
+        minLength: minLength(6)
+      }
+    }
   }
 };
 </script>

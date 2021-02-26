@@ -13,7 +13,6 @@ export const getNotificationAction = async ({ commit }, accessToken) => {
 };
 
 export const updateNotificationAction = async ({ commit }, notify) => {
-  console.log(notify);
   try {
     const notificationToReturn = await notification.editNotification(
       notify,

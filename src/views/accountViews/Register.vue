@@ -155,7 +155,7 @@ import {
   sameAs,
   helpers
 } from "vuelidate/lib/validators";
-import { numberRegex, upperRegex  } from "@/shared"
+import { numberRegex, upperRegex } from "@/shared";
 
 const alpha = helpers.regex("alpha", numberRegex);
 const beta = helpers.regex("alpha", upperRegex);

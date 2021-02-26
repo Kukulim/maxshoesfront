@@ -24,7 +24,6 @@
               tag="button"
               class="btn btn-danger"
             >
-
               <i class="fas fa-edit" />
             </router-link>
           </td>
