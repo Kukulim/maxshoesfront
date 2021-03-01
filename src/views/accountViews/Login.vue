@@ -131,7 +131,8 @@ export default {
       } else if (response.role == "MaxShopOwner") {
         await this.getAllEmployeesAction(response.accessToken);
         this.$router.push({ name: "EmployeesList" });
-      } else if (response.role == "Customer") this.$router.push({ name: "NotificationWelcome" });
+      } else if (response.role == "Customer")
+        this.$router.push({ name: "NotificationWelcome" });
     }
   },
   validations: {
