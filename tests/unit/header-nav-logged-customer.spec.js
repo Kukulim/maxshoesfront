@@ -20,7 +20,8 @@ describe("header-nav.vue", () => {
 
   beforeEach(() => {
     actions = {
-      removeTokens: jest.fn()
+      removeTokens: jest.fn(),
+      logout: jest.fn()
     };
 
     state = {
@@ -30,8 +31,8 @@ describe("header-nav.vue", () => {
     };
 
     getters = {
-      isLoggedIn: () => false,
-      getCurrentUserRole: () => ""
+      isLoggedIn: () => true,
+      getCurrentUserRole: () => "Customer"
     };
 
     store = new Vuex.Store({
@@ -58,12 +59,17 @@ describe("header-nav.vue", () => {
     expect(wrapper.find("nav").exists()).toBe(true);
   });
 
-  it("logout_button_not_exist", () => {
-    expect(wrapper.find(".btn-primary").exists()).toBe(false);
+  it("logout_button_exist_after_login", () => {
+    expect(wrapper.find(".btn-primary").exists()).toBe(true);
   });
 
-  it("nav_buttons_login_register_exist", () => {
-    expect(wrapper.find(".nav-link").text()).toBe("Register");
-    expect(wrapper.find(".nav-link:nth-child(2)").text()).toBe("Login");
+  it("nav_buttons_for_customer_exist", () => {
+    expect(wrapper.find(".nav-link").text()).toBe("Home");
+    expect(wrapper.find(".nav-link:nth-child(2)").text()).toBe(
+      "My Notifications"
+    );
+    expect(wrapper.find(".nav-link:nth-child(3)").text()).toBe(
+      "Personal information"
+    );
   });
 });

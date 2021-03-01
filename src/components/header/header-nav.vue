@@ -49,7 +49,9 @@ export default {
     ...mapMutations("auth", ["removeTokens"]),
     logout() {
       this.removeTokens();
-      this.$router.push({ name: "WelcomePage" });
+      if (this.$route.path !== "/") {
+        this.$router.push("/");
+      }
     }
   },
   computed: {
